@@ -4,6 +4,8 @@ This project showcases the integration of [Next.js](https://nextjs.org) with [Po
 
 ## 🚀 Getting Started
 
+![Generative Image](https://image.pollinations.ai/prompt/Visualize%20a%20natural%20scene%20inspired%20by%20the%20concept%20of%20'lotus'%2C%20featuring%20blooming%20lotus%20flowers%20that%20symbolize%20user%20growth.%20Interlace%20futuristic%20codes%20resembling%20the%20Matrix%20and%20TypeScript%2C%20flowing%20like%20a%20stream%20to%20represent%20the%20seamless%20integration%20of%20Next.js%20and%20Pollinations.ai.%20Include%20the%20text%20'karma.pollinations.ai'%20in%20a%20stylish%2C%20modern%20font%2C%20enhancing%20the%20atmosphere%20of%20creativity%20and%20technology.?width=768&height=768&model=flux&seed=18&nologo=true&enhance=false)
+
 Follow these steps to get the project up and running:
 
 1. **Clone the repository**:

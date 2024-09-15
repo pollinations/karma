@@ -22,11 +22,60 @@ interface PollinationsImageOptions {
 
 const SYSTEM_MESSAGE: Message = {
   role: 'system',
-  content: `You are an image generator. The user provides a prompt. If it is short, add creative details to make it about 50 words suitable for an image generator AI. Please return a JSON and nothing else: { "prompt": "[prompt, max 50 words]", "seed": [seed], "width": [width], "height": [height], "model": "[model]" } Each seed value creates a unique image. To vary the last image, just change the seed and leave everything else the same. Infer width and height around 1024x1024 or other aspect ratios if it makes sense. Default params: - prompt (required): The text description of the image you want to generate. - model (optional): The model to use for generation. Options: 'flux', 'flux-realism', 'any-dark', 'flux-anime', 'flux-3d', 'turbo' (default: 'flux') - seed (optional): Seed for reproducible results (default: random). - width/height (optional): Default 1024x1024. - nologo (optional): Set to true to disable the logo rendering. - enhance (optional): Set to true or false to enable/disable prompt enhancement. If the user specifies the /imagine command, return the parameters as JSON. Response should be in valid JSON format only.`
-};
+  content: `Image Generator Instructions
+You are an image generator. The user provides a prompt. If it is short, add creative details to make it about 50 words suitable for an image generator AI. Please return a JSON and nothing else:
+
+{
+  "prompt": "[prompt, max 50 words]",
+  "seed": [seed],
+  "width": [width],
+  "height": [height],
+  "model": "[model]"
+}
+
+Key points:
+Each seed value creates a unique image for a given prompt.
+To create variations of an image without changing its content:
+Keep the prompt the same and change only the seed.
+To alter the content of an image:
+Modify the prompt and keep the seed unchanged.
+Infer width and height around 1024x1024 or other aspect ratios if it makes sense.
+Infer the most appropriate model name based on the content and style described in the prompt.
+
+Default params:
+prompt (required): The text description of the image you want to generate.
+model (optional): The model to use for generation. Options: 'flux', 'flux-realism', 'any-dark', 'flux-anime', 'flux-3d', 'turbo' (default: 'flux')
+Infer the most suitable model based on the prompt's content and style.
+seed (optional): Seed for reproducible results (default: random).
+width/height (optional): Default 1024x1024.
+nologo (optional): Set to true to disable the logo rendering.
+
+Additional instructions:
+If the user specifies the /imagine command, return the parameters as JSON.
+Response should be in valid JSON format only.`
+}
 
 export default function Home() {
-  const { messages, sendUserMessage } = usePollinationsChat([SYSTEM_MESSAGE]);
+  const { messages, sendUserMessage } = usePollinationsChat([SYSTEM_MESSAGE, {
+    "role": "user",
+    "content": "Illustrate a user giving feedback in a vibrant, interactive way to represent Karma.yt's feedback feature."
+  },
+    {
+      "role": "user",
+      "content": "Create a clean, modern diagram showcasing the components of a Next.js application integrated with Karma.yt."
+    },
+    {
+      "role": "user",
+      "content": "Visualize the concept of AI pollination, showing data being transformed into creative outputs by Pollinations.ai."
+    },
+    {
+      "role": "user",
+      "content": "Design a scene with multiple React components interacting in a seamless user interface."
+    },
+    {
+      "role": "user",
+      "content": "A colorful infographic displaying user engagement statistics from Karma.yt, highlighting user growth and interaction."
+    }]);
   const [userInput, setUserInput] = useState<string>('');
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
